@@ -11,7 +11,7 @@ const Zero = () => {
           position: "absolute",
           padding: "10px",
           borderRadius: "5px",
-          top: "15%",
+          top: "40%",
           left: "5%",
           zIndex: 3,
         }}
@@ -20,7 +20,7 @@ const Zero = () => {
           Pedro Sena Rego
         </Typography>
         <Typography style={{ color: "#ffffffCE", fontSize: "20px" }}>
-          Front End Developer & 3D Designer
+          Front-end Developer & 3D Designer
         </Typography>
       </Box>
       <Solids />
