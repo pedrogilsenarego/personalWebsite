@@ -1,6 +1,6 @@
 import React from "react";
 import Solids from "./Solids";
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Zero = () => {
   return (

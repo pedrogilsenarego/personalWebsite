@@ -27,6 +27,7 @@ const First = () => {
           style={{
             fontSize: "30px",
             fontWeight: 500,
+            textAlign: "left",
             color: "#000000AD",
           }}
         >
