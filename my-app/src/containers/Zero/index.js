@@ -1,11 +1,12 @@
 import React from "react";
-import Name from "../../components/Name";
+import Solids from "./Solids";
+import { Box } from "@mui/material";
 
 const Zero = () => {
   return (
-    <div style={{ height: "100vh", backgroundColor: "#d8a6c1" }}>
-      <Name />
-    </div>
+    <Box style={{ height: "100vh", backgroundColor: "#17202A" }}>
+      <Solids />
+    </Box>
   );
 };
 
