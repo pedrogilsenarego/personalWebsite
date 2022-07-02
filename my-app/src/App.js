@@ -6,7 +6,7 @@ import Third from "./containers/Third";
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App' style={{ maxWidth: "100vw", overflow: "hidden" }}>
       <Zero />
       <First />
       <Second />

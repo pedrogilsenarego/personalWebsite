@@ -1,11 +1,14 @@
-import React, { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const First = () => {
   const { scrollYProgress } = useViewportScroll();
-  const trans = useTransform(scrollYProgress, [0, 0.35, 0.75], [1200, 0, 1200]);
+  const trans = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.47, 0.8],
+    [1200, 0, 0, 1200]
+  );
 
   console.log(trans);
 
@@ -28,7 +31,6 @@ const First = () => {
           right: "7%",
           x: trans,
           overflow: "hidden",
-          maxWidth: "100vw",
         }}
       >
         <Typography
