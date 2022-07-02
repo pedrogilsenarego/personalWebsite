@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { Box, Typography } from "@mui/material";
+import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const First = () => {
+  const { scrollYProgress } = useViewportScroll();
+  const trans = useTransform(scrollYProgress, [0, 0.35, 0.75], [1200, 0, 1200]);
+
+  console.log(trans);
+
   return (
     <div
       style={{
         height: "100vh",
+
         backgroundColor: "#ffffff",
         position: "relative",
       }}
     >
-      <Box style={{ position: "absolute", top: "25%", right: "7%" }}>
+      <motion.Box
+        animate={{
+          x: ["1000px", "0px"],
+        }}
+        style={{
+          position: "absolute",
+          top: "25%",
+          right: "7%",
+          x: trans,
+          overflow: "hidden",
+          maxWidth: "100vw",
+        }}
+      >
         <Typography
           style={{
             fontSize: "180px",
@@ -21,7 +41,7 @@ const First = () => {
         >
           About me
         </Typography>
-      </Box>
+      </motion.Box>
       <Box style={{ position: "absolute", top: "43%", left: "12%" }}>
         <Typography
           style={{

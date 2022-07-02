@@ -9,6 +9,7 @@ const Solids = () => {
     const [hovered, setHover] = useState(false);
     const [active, setActive] = useState(false);
     const [color, setColor] = useState(23);
+    const [rotationDir, setRotationDir] = useState(0.001);
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(() =>
       hovered
@@ -20,22 +21,27 @@ const Solids = () => {
         : null
     );
 
-    useFrame(() => (mesh.current.rotation.z += 0.001));
+    useFrame(() => (mesh.current.rotation.z += rotationDir));
 
     const sleep = (time) => {
       return new Promise((resolve) => setTimeout(resolve, time));
     };
 
-    const doSomething = async () => {
-      for (let i = color; i < 60; i += 4) {
-        await sleep(400);
+    const doSomething = async (value) => {
+      for (
+        let i = color;
+        value === "up" ? i < 60 : i > 23;
+        value === "up" ? (i += 1) : (i -= 1)
+      ) {
+        await sleep(50);
         setColor(i);
       }
     };
 
     useEffect(() => {
       if (hovered) {
-        doSomething();
+        if (color < 50) doSomething("up");
+        else doSomething("down");
       }
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,12 +54,12 @@ const Solids = () => {
         scale={1}
         onClick={(event) => {
           setActive(!active);
-          setColor(23);
+          setRotationDir(rotationDir * -1);
         }}
         onPointerOver={(event) => setHover(true)}
         onPointerOut={(event) => setHover(false)}
       >
-        <boxGeometry args={[1, 1, 0.15]} />
+        <boxGeometry args={[0.9, 0.9, 0.12]} />
         <meshStandardMaterial color={`rgb(${color}, 32, 42)`} />
       </mesh>
     );
@@ -69,7 +75,7 @@ const Solids = () => {
     return array;
   };
   return (
-    <Canvas>
+    <Canvas style={{ zIndex: 2 }}>
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Matrix />
